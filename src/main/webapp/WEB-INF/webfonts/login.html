@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="../../css/resume.css">
+
+    <!-- Font Awesome Icons-->
+    <link rel="stylesheet" href="../../css/all.css">
+
+    <!------------ Owl-Carousel ------------>
+    <link rel="stylesheet" href="../../css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../../css/owl.theme.default.min.css">
+
+
+    <!--------------------- AOS Library---------------->
+    <link rel="stylesheet" href="../../css/aos.css">
+
+    <!--Custom Style-->
+    <link rel="stylesheet" href="../../css/Style.css">
+
+    <!------------- Login -------------------->
+    <link rel="stylesheet" href="../../css/style2.css">
+    <link rel="stylesheet" href="../../css/iconfont.css">
+</head>
+<body>
+    
+    <!----------------------Navigation----------------->
+
+    <nav class="nav">
+        <div class="nav-menu flex-row">
+            <div class="nav-brand">
+                <a href="#" class="text-gary">Bloger</a>
+            </div>
+            <div class="toggle-collapse">
+                <div class="toggle-icons">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+            <div>
+                <ul class="nav-items">
+                    <li class="nav-link">
+                        <a href="../Index.html">Home</a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="../Index.html">Category</a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="../Index.html">Pictures</a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="../Index.html">Articles</a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="../Index.html">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <div class="social text-gary">
+                    <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2632292881&site=qq&menu=yes"><i class="fab fa-qq"></i></a>
+                    <a href="#"><i class="fab fa-weixin"></i></a>
+                    <a href="#"><i class="fab fa-weibo"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!--------------------------------Login------------------------------------------->
+    <div class="Login" data-aos="zoom-in" data-aos-delay="200">
+        <div id="bigBox">
+			<h1>LOGIN</h1>
+			<form action="">
+			<div class="inputBox">
+				<div class="inputText">
+					<span class="iconfont icon-nickname"></span>
+					<input type="text" placeholder="Username" id="txtID" onkeydown="idKeyDown()">
+				</div>
+				<div class="inputText">
+					<span class="iconfont icon-visible"></span>
+					<input type="password" placeholder="Password" id="txtPWD" onkeydown="pwdKeyDown()">
+				</div>
+			</div>
+			<input class="loginButton" type="button" value="Login" id="txton" onkeydown="submit()" onclick="check_login()" >
+			<input class="loginButton" type="reset" value="Reset">
+		</form>
+        </div>
+        
+    </div>
+
+
+
+
+
+
+	<script>
+		var txtID,txtPWD;
+		window.onload=function(){
+			txtID=document.getElementById("txtID");
+            txtPWD=document.getElementById("txtPWD");
+		}
+
+		function idKeyDown(){
+			if(window.event.keyCode==13){
+				txtPWD.focus();
+			}
+		}
+
+		function pwdKeyDown(){
+			if(window.event.keyCode==13){
+				submit();
+			}
+		}
+
+		function submit(){
+			var id=txtID.value;
+			var pwd=txtPWD.value;
+			if(id==""){
+				alert("用户名不能为空!")
+				txtID.focus();
+			}else if(pwd==""){
+				alert("密码不能为空！")
+				txtPWD.focus();
+			}else{
+				alert("开始登录验证...")
+				var TureID='ZSJ';
+				var TurePWD='123456';
+				
+				if(id==TureID&&TurePWD==pwd){
+					alert("登录成功")
+				}else{
+					alert("登录失败")
+				}
+			}
+        }
+        
+        var op_on = document.getElementById("txton");
+        op_on.onclick = function() {
+        var op_name = document.getElementById("txtID").value;
+        var op_password = document.getElementById("txtPWD").value;
+        var name = "ZSJ";
+        var psword = "123456" ;
+        
+        if(op_name.length<3||op_name.length>8){
+            alert("你输入的用户名少于两位或者大于八位");
+        }
+        else if(op_password.length<6||op_password.length>16){
+            alert("你输入的密码少于六位或者大于十六位");
+        }
+        else{
+                alert("开始登录验证...")
+				var TureID='ZSJ';
+                var TurePWD='123456';
+				if(op_name==TureID&&op_password==TurePWD){
+					alert("登录成功")
+				}else{
+					alert("登录失败")
+				}
+			}
+    }
+
+
+    // ---------------- Mongo DB-----------------
+    // var op_on = document.getElementById("txton");
+    //     op_on.onclick = function() {
+    //     var op_name = document.getElementById("txtID").value;
+    //     var op_password = document.getElementById("txtPWD").value;
+        
+    //     if(op_name.length<3||op_name.length>8){
+    //         alert("你输入的用户名少于两位或者大于八位");
+    //     }
+    //     else if(op_password.length<6||op_password.length>16){
+    //         alert("你输入的密码少于六位或者大于十六位");
+    //     }
+    //     else{
+    //             alert("开始登录验证...")
+    //             var inputname=op_name;
+    //             var inputpassword=op_password;
+    //             alert("开始连接数据库...")
+    //             alert("数据库连接完毕...")
+    //             MongoClient.connect(url,{ useNewUrlParser: true, useUnifiedTopology: true }, function(err, db) {
+    //                 if (err) throw err;
+    //                 var dbo = db.db("Blog");
+    //                 var whereStr = {"name":inputname,"password":inputpassword};  // 查询条件
+    //                 dbo.collection("user").find(whereStr).toArray(function(err, result) {
+    //                     if (err){
+    //                         throw err;
+    //                     } 
+
+    //                     if(result.length > 0){
+    //                         console.log('登录成功');
+    //                     }
+    //                     else{
+    //                         console.log('登录失败');
+    //                     }
+    //                     db.close();
+    //                 });
+    //             });
+	// 		}
+    // }
+
+
+    //     var op_on = document.getElementById("txton");
+    //     op_on.onclick = function() {
+    //         var MongoClient = require('mongodb').MongoClient;
+    //         var url = "mongodb://localhost:27017";
+    //         MongoClient.connect(url, function(err, db) {
+    //         if (err) throw err;
+    //         alert("数据库已创建!");
+    //         db.close();
+    //         });
+    // }
+
+
+        // window.onload(function(){
+        //     alert('数据库连接成功')
+        //                     //引入模块
+        //         var mongoose = require('mongoose');
+        //         //连接数据库
+        //         mongoose.connect('mongodb://localhost:27017');
+        //         //得到数据库连接句柄
+        //         var db = mongoose.connection;
+        //         //通过数据库连接句柄，监听mongoose数据库成功的事件
+        //         db.on('open',function(err){
+        //             if(err){
+        //                 console.log('数据库连接失败');
+        //                 throw err;
+        //             }
+        //             console.log('数据库连接成功')
+                   
+        //         })
+        // })
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+
+    <!------------------Footer----------------->
+
+    <footer class="footer">
+        <div class="container">
+            <div class="about-us" data-aos="fade-right" data-aos-delay="200">
+                <h2>About the blog</h2>
+                <p>This blog is used to share ACNG related culture. You can find many beautiful pictures and cute characters on it.</p>
+            </div>
+            <div class="newletter" data-aos="fade-right" data-aos-delay="200">
+                <h2>News Letter</h2>
+                <p>Stay update with our latest</p>
+                <div class="form-element">
+                    <input type="text" placeholder="Email"><span><i class="fas fa-chevron-right"></i></span>
+                </div>
+            </div>
+            <div class="pixiv" data-aos="fade-left" data-aos-delay="200">
+                <h2>Pixiv</h2>
+                <div class="flex-row">
+                    <img src="../../assets/4531683_p0.png" alt="pix1">
+                    <img src="../../assets/6202505_p0.jpg" alt="pix2">
+                    <img src="../../assets/7937247_p0.jpg" alt="pix3">
+                </div>
+                <div class="flex-row">
+                    <img src="../../assets/44873217_p0.jpg" alt="pix4">
+                    <img src="../../assets/19193639_p0.jpg" alt="pix5">
+                    <img src="../../assets/51711470_p0.jpg" alt="pix6">
+                </div>
+            </div>
+            <div class="follow" data-aos="fade-left" data-aos-delay="200">
+                <h2 id="Contact">Contact us</h2>
+                <p>Let us share the ACGN culture</p>
+                <p>tel:13668122735</p>
+                <div>
+                    <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2632292881&site=qq&menu=yes"><i class="fab fa-qq"></i></a>
+                    <a href="#"><i class="fab fa-weixin"></i></a>
+                    <a href="#"><i class="fab fa-weibo"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="move-up">
+            <span><i class="fas fa-arrow-circle-up fa-2x"></i></span>
+        </div>
+    </footer>
+
+
+
+
+    
+    <!--X----------------Footer----------------->
+
+    <!--Jquery Library file-->
+    <script src="../../js/Jquery3.5.1.min.js"></script>
+
+
+    <!------------ Owl-Carousel ------------>
+    <script src="../../js/owl.carousel.min.js"></script>
+
+
+
+
+    <!--------------------- AOS js Library---------------->
+    <script src="../../js/aos.js"></script>
+
+
+
+    <!--Custom Javascript file-->
+    <script src="../../js/main.js"></script>
+
+
+    <!--------------------- login---------------->
+    <script src="../../js/login.js"></script>
+</body>
+</html>
